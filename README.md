@@ -1,6 +1,6 @@
 //============================Learn2Mock======================================//
 
-Simple dummy data (user,todo) generator, for app testing etc. 
+Simple dummy data (user,todo) generator in json format, for app testing etc. 
 
 //==========================================================================//
 
