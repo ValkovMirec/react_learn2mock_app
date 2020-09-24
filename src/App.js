@@ -11,8 +11,6 @@ import UserModel from "./components/UserModel";
 
 const chance = new Chance();
 
-//
-
 export default function App() {
   //states
 
@@ -94,10 +92,6 @@ export default function App() {
 
   //
 
-  console.log("todos", todos);
-
-  //
-
   return (
     <ApplicationContext.Provider value={{ todos, users }}>
       <div className="app-container">
@@ -146,6 +140,8 @@ export default function App() {
             <button onClick={onSubmitHandler}>Generate</button>
           </form>
         </div>
+
+        {/*Conditional rendering of data and error message */}
 
         {error && <div style={{ color: "red" }}>Invalid or missing input</div>}
 
