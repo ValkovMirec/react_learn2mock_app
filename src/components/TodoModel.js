@@ -1,16 +1,9 @@
 import React, { useContext } from "react";
 import ApplicationContext from "../utils/ApplicationContext";
+import JsonComponent from "./JsonComponent";
 
 export default function TodoModel() {
   const ctx = useContext(ApplicationContext);
-
-  const JsonComponent = (value, replacer = null, space = 4) => {
-    return (
-      <pre>
-        <code>{JSON.stringify(value, replacer, space)}</code>
-      </pre>
-    );
-  };
 
   return (
     <ApplicationContext.Consumer>

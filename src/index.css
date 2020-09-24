@@ -18,8 +18,17 @@ code {
 
 .app-container {
   margin: 2em auto;
-  border: 2px solid black;
+  border: 5px solid black;
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  border: 2px solid black;
+  width: 10em;
+  margin: 0.5em;
 }
 
 form {
@@ -47,19 +56,23 @@ button {
 }
 
 .json-element {
+  background-color: black;
+  color: rgb(0, 255, 0);
   padding: 12px;
   margin: 1em;
-  color: var(--highlight-color);
+
   width: auto;
   max-height: 60vh;
   overflow: auto;
   font-size: 13px;
   line-height: 1.30769231;
-  background-color: var(--highlight-bg);
+  background-color: rgb(119, 119, 119);
   border-radius: 5px;
   scrollbar-color: var(--scrollbar) transparent;
   border: 1px solid grey;
   border-radius: 0.5em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: lighter;
 }
 
 .data-container {

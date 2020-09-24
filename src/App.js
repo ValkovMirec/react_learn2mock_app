@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Chance from "../node_modules/chance";
-import { interestsArray, avatarNames } from "./data/generatorDataArrays";
-import { completedAt, generateTodo } from "./utils/functions";
+
+import { generateTodo, generateUser } from "./utils/functions";
 import ApplicationContext from "./utils/ApplicationContext";
+
 import TodoModel from "./components/TodoModel";
 import UserModel from "./components/UserModel";
 
@@ -11,8 +12,6 @@ import UserModel from "./components/UserModel";
 const chance = new Chance();
 
 //
-
-console.log(generateTodo(10));
 
 export default function App() {
   //states
@@ -68,12 +67,19 @@ export default function App() {
       setError(false);
     } else {
       setError(true);
+      return;
     }
 
-    // output handling
+    // output handling todo/user
 
     if (formData.dataType === "todo") {
       setTodos((todos) => todos.concat(generateTodo(formData.inputField)));
+    }
+
+    //
+
+    if (formData.dataType === "user") {
+      setUsers((users) => users.concat(generateUser(formData.inputField)));
     }
   };
 
@@ -81,8 +87,9 @@ export default function App() {
 
   const resetScreenHandler = (event) => {
     event.preventDefault();
-    console.log("resetbuttonclicked");
+
     setTodos([]);
+    setUsers([]);
   };
 
   //
@@ -94,61 +101,70 @@ export default function App() {
   return (
     <ApplicationContext.Provider value={{ todos, users }}>
       <div className="app-container">
-        <form>
-          <input
-            autoFocus
-            className="number-input"
-            type="number"
-            placeholder="...how much data?"
-            onChange={onChangeInput}
-          ></input>
+        <div className="form-container">
+          <form>
+            <input
+              autoFocus
+              className="number-input"
+              type="number"
+              placeholder="...how much data?"
+              onChange={onChangeInput}
+            ></input>
 
-          <div className="radio-container">
-            <div className="radio-switch">
-              <label>ToDo</label>
+            <div className="radio-container">
+              <div className="radio-switch">
+                <label>ToDo</label>
 
-              <input
-                type="radio"
-                checked={formData.dataType === "todo"}
-                onChange={() => {
-                  setFormData({
-                    ...formData,
-                    dataType: "todo",
-                  });
-                }}
-              ></input>
+                <input
+                  type="radio"
+                  checked={formData.dataType === "todo"}
+                  onChange={() => {
+                    setFormData({
+                      ...formData,
+                      dataType: "todo",
+                    });
+                  }}
+                ></input>
+              </div>
+
+              <div className="radio-switch">
+                <label>User</label>
+
+                <input
+                  type="radio"
+                  checked={formData.dataType === "user"}
+                  onChange={() => {
+                    setFormData({
+                      ...formData,
+                      dataType: "user",
+                    });
+                  }}
+                ></input>
+              </div>
             </div>
 
-            <div className="radio-switch">
-              <label>User</label>
+            <button onClick={onSubmitHandler}>Generate</button>
+          </form>
+        </div>
 
-              <input
-                type="radio"
-                checked={formData.dataType === "user"}
-                onChange={() => {
-                  setFormData({
-                    ...formData,
-                    dataType: "user",
-                  });
-                }}
-              ></input>
-            </div>
-          </div>
-
-          <button onClick={onSubmitHandler}>Generate</button>
-        </form>
         {error && <div style={{ color: "red" }}>Invalid or missing input</div>}
+
+        {users.length > 0 || todos.length > 0 ? (
+          <button onClick={resetScreenHandler}>Reset</button>
+        ) : (
+          <div></div>
+        )}
+
         {todos.length > 0 ? (
           <div className="data-container">
-            <button onClick={resetScreenHandler}>Reset</button>
             <TodoModel />
           </div>
         ) : (
           <div></div>
         )}
+
         {users.length > 0 ? (
           <div className="data-container">
-            <button onClick={resetScreenHandler}>Reset</button>
             <UserModel />
           </div>
         ) : (

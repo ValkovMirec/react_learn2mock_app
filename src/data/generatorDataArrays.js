@@ -381,22 +381,26 @@ const avatarsSrc = [
   },
 ];
 
-//
+//Arrays for
 
-const avatarNames = [];
+const avatarLinkSplit = [];
 
-//
+//Avatar links splitting, for avatar title
 
 for (let i = 0; i < avatarsSrc.length; i++) {
-  avatarNames.push(
-    avatarsSrc[i].avatarLink.substring(21, avatarsSrc[i].avatarLink.length - 26)
+  avatarLinkSplit.push(
+    avatarsSrc[i].avatarLink
+      .split(".")
+      .join(",")
+      .split("/")
+      .join(",")
+      .split(",")
   );
 }
 
-export default { avatarNames, interestsArray };
-
-// todos array
-
-//console.log(avatarNames)
+const mappedAvatarNames = avatarLinkSplit.map((name) => name[4]);
 
 //
+
+export { mappedAvatarNames };
+export { interestsArray };
