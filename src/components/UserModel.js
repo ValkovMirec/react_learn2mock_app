@@ -9,7 +9,7 @@ export default function UserModel() {
     <ApplicationContext.Consumer>
       {({ users }) => {
         return (
-          <div className="json-element">
+          <div>
             <JsonComponent value={users} />
           </div>
         );

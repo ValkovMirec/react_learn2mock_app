@@ -9,7 +9,7 @@ export default function TodoModel() {
     <ApplicationContext.Consumer>
       {({ todos }) => {
         return (
-          <div className="json-element">
+          <div>
             <JsonComponent value={todos} />
           </div>
         );

@@ -4,8 +4,10 @@ import React from "react";
 
 export default function JsonComponent(value, replacer = null, space = 4) {
   return (
-    <pre>
-      <code>{JSON.stringify(value, replacer, space)}</code>
-    </pre>
+    <div className="json-element">
+      <pre>
+        <code>{JSON.stringify(value, replacer, space)}</code>
+      </pre>
+    </div>
   );
 }

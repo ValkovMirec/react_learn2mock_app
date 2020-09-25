@@ -64,7 +64,6 @@ export function generateTodo(a) {
       title: chance.sentence({ words: 5 }),
       description: chance.sentence(),
       completedAt: completedAt(),
-      completed: new Date(completedAt).getTime() / 1000 < new Date(),
     };
 
     todos.push(todo);
@@ -81,7 +80,7 @@ export function generateUser(a) {
   //
   for (let i = 1; i <= a; i++) {
     const randomInterest =
-      interestsArray[chance.integer({ min: 0, max: interestsArray.length })];
+      interestsArray[chance.integer({ min: 1, max: interestsArray.length })];
 
     const randomAvatar = mappedAvatarNames[chance.integer({ min: 0, max: 99 })];
 
@@ -90,7 +89,7 @@ export function generateUser(a) {
     const user = {
       name: chance.name(),
       age: chance.integer({ min: 18, max: 65 }),
-      interests: randomInterest,
+      interests: !randomInterest ? "unspecified" : randomInterest,
       avatar: `https://robohash.org/${randomAvatar}.png?size=150x150&set=set1`,
     };
 

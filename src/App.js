@@ -137,7 +137,9 @@ export default function App() {
               </div>
             </div>
 
-            <button onClick={onSubmitHandler}>Generate</button>
+            <button className="generate-button" onClick={onSubmitHandler}>
+              Generate
+            </button>
           </form>
         </div>
 
@@ -146,7 +148,9 @@ export default function App() {
         {error && <div style={{ color: "red" }}>Invalid or missing input</div>}
 
         {users.length > 0 || todos.length > 0 ? (
-          <button onClick={resetScreenHandler}>Reset</button>
+          <button className="reset-button" onClick={resetScreenHandler}>
+            Reset
+          </button>
         ) : (
           <div></div>
         )}
