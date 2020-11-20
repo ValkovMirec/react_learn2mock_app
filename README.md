@@ -2,6 +2,8 @@
 
 Simple dummy data (user,todo) generator in json format, for app testing etc. 
 
+You can find it running [Here](https://learn2mock-json-generator.netlify.app/)
+
 //==========================================================================//
 
 First wave:
